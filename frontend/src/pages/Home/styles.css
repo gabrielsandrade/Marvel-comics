@@ -73,9 +73,14 @@
 .pagination {
     display: flex;
     justify-content: center;
-    margin: 10px auto;
+    margin-bottom: 40px;
 }
 
 .pagination .button {
     margin: auto 10px;
+    transition: transform .2s;
+}
+
+.pagination .button:hover {
+    transform: scale(1.1);
 }
