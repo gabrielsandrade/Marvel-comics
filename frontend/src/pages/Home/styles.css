@@ -1,0 +1,81 @@
+.comic-search {
+    width: 100%;
+    max-width: 1000px;
+    text-align: center;
+    margin: 15px auto;
+}
+
+.comic-search input, button {
+    display: inline-block;
+    height: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 5px;
+    text-align: center;
+}
+
+.comic-search input {
+    width: 80%;
+    max-width: 400px;
+}
+
+.comic-search button {
+    margin-left: -5px;
+    background-color: hsla(0, 100%, 48%, 0.877);
+    color: black;
+    cursor: pointer;
+    transition: background-color .3s;
+}
+
+.comic-search button:hover {
+    background-color: black;
+    color: white;
+}
+
+.comic-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 172px);
+    grid-gap: 24px;
+    list-style: none;
+    width: 100%;
+    max-width: 1120px;
+    margin: 40px auto;
+    padding: 0px;
+    justify-content: center;
+}
+
+.comic-item {
+    position: relative;
+    width: 100%;
+    max-width: 200px;
+    height: 300px;
+    margin: auto;
+}
+
+.comic-item img {
+    transition: transform .4s;
+    box-shadow: 0 0 5px 0 black;
+}
+.comic-item img:hover {
+    transform: translateY(-10px);
+}
+
+.comic-item p {
+    text-align: center;
+    margin-top: 8px;
+}
+
+.comic-item a {
+    text-decoration: none;
+    color: black;
+    font-weight: 500;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin: 10px auto;
+}
+
+.pagination .button {
+    margin: auto 10px;
+}
