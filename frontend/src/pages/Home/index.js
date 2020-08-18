@@ -7,18 +7,28 @@ import './styles.css';
 
 export default function Home (props) {
     const [comics, setComics] = useState([]);
+    const [prevButton, setPrevButton] = useState(true);
+    const [nextButton, setNextButton] = useState(true);
+
     const query = queryString.parse(props.location.search);
     const page = parseInt(query.page) || 1;
-    const previewsDisabled = (page === 1);
     apiParams.page = page;
+    let totalPages = 0;
+    
     useEffect(() => {
         api.get('comics', {
             params: apiParams,
         })
         .then(response => {
-            setComics(response.data);
+            const totalComics = response.data.total;
+            const modTotalPages = totalComics % 10;
+            totalPages = (modTotalPages === 0) ? parseInt(totalComics / 10) : parseInt(totalComics / 10) + 1;
+            setComics(response.data.results);
+            setPrevButton(page === 1);
+            setNextButton(totalPages === page);
         })
     }, [page])
+
 
     return (
         <div className="home-container">
@@ -39,16 +49,16 @@ export default function Home (props) {
                 ))}
             </ul>
             <div className="pagination">
-                <Link to={`/?page=${(page) - 1}`}>
-                    <button className="button" disabled={previewsDisabled}>
+                <a href={`/?page=${(page) - 1}`}>
+                    <button className="button" disabled={prevButton}>
                         Página anterior
                     </button>
-                </Link>
-                <Link to={`/?page=${(page) + 1}`}>
-                    <div className="button">
+                </a>
+                <a href={`/?page=${(page) + 1}`}>
+                    <button className="button" disabled={nextButton}>
                         Próxima Página
-                    </div>
-                </Link>
+                    </button>
+                </a>
             </div>
         </div>
     )
