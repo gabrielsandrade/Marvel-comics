@@ -24,7 +24,7 @@ module.exports = {
                 'Access-Control-Allow-Origin': true,
               },
         }).then(resp => {
-            return (response.json(resp.data.data.results));
+            return (response.json(resp.data.data));
         })
         .catch(error => {
             console.log(error);
